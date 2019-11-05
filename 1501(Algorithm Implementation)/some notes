@@ -1,0 +1,631 @@
+use of graphs: network
+undirected graph: edges are unordered pairs (a,b)==(b,a)
+directed graph: edges are ordered pairs (a,b)!=(b,a)
+
+minimum of edges: 0
+maximum of edges: 
+if undirected: v(v-1)/2  (no self edges)
+if directed: v^2 (consider self-edges)
+
+sparse if e<=vlgv
+
+a graph is considered dense as it approaches the maximum number of edges. i.e. e=MAX-\epsilon
+a complete graph has maximum number of edges
+
+representing graphs:2 lists for vertices and edges
+check for edges or neighbors: O(e)
+
+adjacency matrix: 
+find edge: O(1)
+find neighbor: v
+
+memory cost v^2
+
+Adjacency lists
+check run time worst case: v
+space cost: v+e
+
+if the graph sparse: the runtime would be much less than v
+if the graph is dense: prefer matrices than lists
+
+similar trade off between: R-way and DLB trie
+
+list of nodes/list of edges approach?
+only advantage: save number of edges by saving the 
+
+
+1501:
+Path: a sequence of adjacent vertices
+Simple path: a path in which no vertices are repeated
+Simple Cycle: A simple path with the same first and last vertex
+connected graph: a graph in which a path exists between all vertex pairs
+connected component : connected subgraph of a graph
+cyclic graph: a graph with no cycles
+Tree: a connected acyclic graph: has exactly v-1 edges
+
+DFS:
+can be easily implemented recursively
+for each node, visit first unseen neighbor (we assume in ascending order, pick smallest every time)
+backtrack if no unseen neighbors 
+
+bfs: be easily implemented using a queue
+For each node visited, add all of its neighbors to the queue
+vertices that have been seen but not yet visited are said to be the fringe
+pop if no other neighbors 
+
+BFS traversals can further be used 最短路问题
+
+BFS & DFS: create spanning tree
+
+analysis of graph traversals:
+at high level: DFS and BFS have the same runtime:
+Each node must be seen and then visited, but the order will differ between these two approaches
+runt time  v^2 (in adjacent matrix), in adjacent list (v+e)
+neighbor check: linear in v, v neighbor numeration check 
+=>  if the graph is sparse, the list would be much quicker.
+
+if the graph is connected： spanning tree:
+if not: need a wrapper to go over all the vertices: but the runtime will still be O(e)
+
+pre-order: dictionary tree
+in-order traversal: B-tree
+post-order: assign low values
+
+Biconnected graphs: at least 2 distinct paths (no common edges or vertices) between all vertex pairs
+
+Finding articulation points
+variation on DFS
+building up the spanning tree
+	Have it be directed 
+	Create “back edges” we find the node we’ve seen
+	calculate low values
+
+if low value geq num value: articulation points
+if root have 2 children: articulation point
+
+no articulation points: biconnected
+
+store edge weights
+adjacency matrix: store the weight than 1s
+adjacency list: store weight in another field
+How do weights affect finding spanning tress/shortest paths
+	the weighted variants of these problems are called finding the minimum spanning tree and the weighted shortest path
+
+Minimum spanning trees (MST)
+
+graphs can potentially have multiple spanning trees
+MST is the spanning tree that has the minimum sum of edge weights
+
+Prim’s algorithm
+Initialzie T to contain the starting vertex
+T will eventually become the MST
+while vertices not in T
+find minimum edge weight edge connects a vertex in T
+add edge with vertex to T
+ 
+Runtime:
+    each step check possible edges
+ 	first v-1 edges
+	second 2(v-2) possiblities
+       next 3(v-3)
+=> Run time v^3
+
+parent & best edge array
+
+runtime: v^2
+run v times 
+find the minimum v+check neighbors v
+
+find min operation: priority queue
+ 
+
+
+runtime with priority queue
+
+inset e edges into the priority queue:
+worst case add: e worst case remove e 
+find lge
+=> theta (elge) —lazy prim's
+
+indexible for priority queue: to change the index for 
+indirection 
+
+prefer adjacency lists — to improve on sparse graphs
+
+Adjacency matrix Prim’s:
+runtime v^2
+space v
+Lazy Prim:
+run time elge
+space e
+require pq
+Eager Prim:
+
+
+Dijkstra’s algorithm
+set a distance value of Max_Int for all vertices for start
+set cur=start
+while destination not visited 
+
+Note Dijkstra doesn’t work for graph having negative edges
+
+run-time for Dijkstra:
+Analysis of Dijkstra’s algorithm
+
+How to implement 
+
+Best/parent array?
+	runtime 
+PQ
+
+Another MST algorithm
+Kruskal’s MST:
+Put everything in PQ; if not cycle, then put it into T
+
+elge insert
+e*cycle detection:
+e removal
+
+articulation point: delte separate them up
+1.Brute Force
+2.Variation of DFS
+	build spanning tree
+	direct with articulation point
+
+
+union find
+dynamic connectivity problem
+given graph G can we determine whether or not 2 vertices are connected in G
+
+whether connected: BFS/DFS
+BFS: shortest path for connecting
+
+BFS/DFS:e
+adjacent matrix: v^2
+adjacent list: e
+
+if BFS overkill?
+just find a path: not the shortest
+
+connected component over graph: connected subgraph of a graph
+
+simple approach:
+id array simply store the component id for each item in the union/find structure 
+	how do we determine if two vertices are connected
+	how 
+
+	find out if 2 component in the same ti
+
+runtime:
+	1.find two vertices are connected: O1
+	2.For a union operation:v(trace through the vertices)
+
+Union Find API
+
+fast-find approach
+
+Kruskal’s algorithm:
+
+using union find for cycle detections:
+when perform union:
+e cycle detection checks,
+elge+elge+O1+mst+v(find)*v(update)=> v^2
+
+improve on union’s runtime
+
+reason for o(v): change all the connected vertices
+
+improvement: combine the forest
+
+the arrow point up: trace back the tree to find if they share the same node
+
+never end up goes to the end of trees
+do not need to store child reverences
+
+tall tree bad in this case: linear 
+
+each union: linear
+implementation:
+index[id]=id: root
+
+tree base approach analysisL
+run time: 
+find & union: bounded by the height of trees
+
+1-level high (or at least pretty low levels)
+Implementation using the same id array
+
+size not necessarily the same as tree height
+this time: it would be the case:
+check how big tree rooted by i,j
+bigger: root
+
+find and union have logarithmic 
+any better: yes
+not on union but find: path compression
+	find  operation: compression the trees:
+find: high tree
+put all of its roots to directly be come 
+=> nearly constant runtime, optimal of union find data structures
+
+with weighted trees
+larger number of nodes would be the root
+insignificant for find cycles
+
+network flow:
+directed weighted graph G(V,E)
+
+c(u,w) is the capacity of edge (u,w)
+f(u,w) is the capacity of edge (u,w)
+s: source t:sink
+any vertex other than s&t has same amount of flowing with flow out
+
+Ford Fulkerson: maximal flow of the graph
+while there is a path from s to t has flow less than capacity: have residual capacity 
+augmenting  path
+
+backward edges 
+only exists when allocate
+exist but have capacity 0 till allocate
+
+residual graph:count for residual graph
+find flow w/back edge
+update the capacity of backward edge
+
+Edmonds Karp: a shortest path heuristic for Ford Fulkerson
+using BFS to find augmenting path 
+
+will always find the max flow
+
+
+our flow graph is weighted 
+Edmonds-Karp only uses BFS
+find spanning trees and shortest paths for unweighted graphs
+why use some measure of priority to find augmenting paths
+
+Implementation concerns
+represent residual graphs:
+ending: when the bfs cannot find a path to t.
+
+st-cuts
+find min cut:
+Max flow == min cut
+A special case of duality
+The cutting up place: between green and gray
+
+max flow/min cut on unweighted graphs
+measure max flow/min cut: 1
+cut: 
+use edmonds kart
+
+integer multiplication:
+runtime of application: O(n^2)
+n: number of digits:
+processor: 2x32 bit integers=>64bit (MUL)
+
+RSA keys should be 2048 bits
+
+gradeschool algorithm on binary numbers
+
+are we able to shift in constant time? shift might be too big to fit
+
+when number too big: shift would be linear
+
+improvement: 
+divide and conquer:
+	break n bit integers in half:
+
+e.g. break the x into x_h and x_l
+=>x=2^{n/2}x_h+x_l
+=>x*y=(2^{n/2}x_h+x_l)(2^{n/2}y_h+y_l)=2^n(x_hy_h)+2^{n/2}(x_hy_l+x_ly_h)+x_ly_l
+3 additions of n bit integers
+a couple shits of up to n positions
+
+log n high, n operation per level
+
+hight of the tree:
+lg_4 n
+
+recursion really complicates our analysis
+
+use a recurrence relation to analyze the recursive runtime
+
+goal to determine:
+how much work is done in each recursive call
+how much 
+
+shit in the current call:
+shifts and additions are \theta (n)
+work left to future calls:
+4 more multiplications 
+
+T(n)=4T(n/2)+\theta(n)
+
+master theorem:
+T(n)=aT(n/b)+f(n)
+
+a constant >=1
+b>1
+\epsilon: polynomial greater 
+
+maybe cs1510
+
+recurrence relation for merge sort:
+
+\epislon: can be fractional
+
+decrease the number of 
+decrease the number of subproblems
+
+XhYl+XlYh: only care about sums
+
+Karatsuba craziness
+
+x*y=2^nM1+2^{n/2}(M5-M2-M3)+M4
+T(n)=3T(n/2)+\theta(n)
+which solves to be \theta(n^lg3)
+Hybrid algorithm
+
+why bothering with grade school:
+memory? —stack
+divide and conquer—practically lots of time
+the amount of n
+300: grade school 
+600: Kartsuba
+
+The best?
+Schonhage-Strassen:
+Fast Fourier transforms
+
+O(n log n log log n):
+practical numbers beyond 2^2^15 to 2^2^17
+
+Furer was able to achieve even better asymptotic run time in 2007
+n log n 2^o(log^*n)
+No practical difference for realistic value of n
+c library for schonhage- atrasen algorithm 
+
+exponentiation:
+x^y can easily compute with 
+
+runtime: # of iterations * cost to multiply
+
+linear number of multiplications
+
+runtime is still dominated by the multiplication
+
+GCD:
+brute force:
+iterate over the value, exponential 
+Euclid’s algorithm:
+linear
+
+extend euclidean algorithm (XGCD)
+GCD(a,b)=i=ax+by
+
+can be done in the same runtime
+
+cryptography
+The key could only be found by both people
+cryptography h
+
+Caesar cipher: shift 
+R: radix of alphabet
+harder:
+key is now this permutation. not just a shift value:
+it would be R! possible permutations
+incredibly easy to crack
+
+patterns & chararcristics 
+cs 1663
+
+what is a good cipher
+
+one-time pads
+
+binary data, xor
+upon receiving a message
+1// take the next pad
+use modular subtraction to combine key with message
+read result
+
+use one-time pad: can be used to give all possible strings w/ module
+
+difficulties with one-time pads
+
+pads must be truly random
+both sender and receiver must have matched list of pads in appropriate order 
+once run out of pad, no more messages can be sent
+need same pad same time
+
+Symmetric ciphers
+e.g. DES AES Blow fish
+users share a single key
+numbers of a given bit length
+encryptions/decryptions will be fast
+
+problems with symmetric ciphers 
+
+public-key encryption
+posted repositories of public keys
+email signature
+each user is responsible only for their own key pair
+
+RSA: 2nd group of people find it
+
+what are RSA key pairs
+how messages encrypted ?
+how are 
+
+RSA key pairs:
+public key is 2 numbers call n &e
+
+encryption：
+
+n e d: need to be carefully generated
+choose 2 prime numbers p &q
+compute n=p q
+\phi(n)=\phi(p)\phi(q)=(p-1)(q-1)
+
+e usually 3
+
+d=e^-1 mod (\phi(n))
+means that d=1/e mod (\phi(n))
+
+15793176andNEW，
+
+
+bounds its answer from greater than n
+
+prime testing option 1:Brute force 1
+
+np hard 
+at least difficult as hard as NP
+
+1501 
+review session
+first half review
+recitation cancelled next week
+materials began with materials
+
+P vs NP pro
+solve in polynomial times with non-deterministic algorithm
+
+NP-Complete:
+The hardest problem can be solve in 
+NP-hard:
+at least as hard as every other
+problem in NP
+at least difficult as most difficult with
+cannot solve in polynomial time except NP-complete
+NP \intersect NP-Hard= Np complete
+
+halmotonian circuits
+shortest halmotonian
+approx ratios
+
+2*length mst weight must less than 2*optimal solution (since need to be back)
+
+still have optimal ratio of 2 
+
+D=>F vs D-E-F
+holds for Euclidean Geometry  (by triangle inequality)
+
+MST algorithm always holds,
+but the short cut approach might not be valid
+(一笔画问题： MST does not hold anymore)
+
+Greedy algorithm (贪心问题)
+Nearest neighbor approach (find the nearest neighbor: does not guarantee the best approach)
+building huffman trees
+
+Properties of greedy problems
+optimal substructure
+solution to a subproblem can be used for overall optimal solution 
+greedy choice property
+globally optimal solutions can be assembled from locally optimal choices
+
+Finding all subproblems can be inefficient:
+Fibonacci sequence:
+tree duplication
+
+memorization: lookup precompute values 
+
+Dynamic programming:
+optimal substructure 
+same with greedy
+overlapping subproblems
+need to recompute the same subproblem multiple times
+
+Knapsack problem: 背包问题
+unbounded copies of each
+—
+recursive example
+minimum amount of work
+
+greedy approach: 
+
+might not use 
+but most of the time is bottom-up solution 
+only a few case top down memorization solution
+
+fractional weight: round it 
+bottom up questions might not be only memorize
+
+0/1 knapsack problem:
+finite set of items that each has a weight and value
+goes in the snapsack
+
+
+build data
+
+Point in Polygon
+Cross odd number of polygon: in the polygon
+
+
+questions:
+cycle dectation?
+Ford-Fulkerson—any detection
+euclid algorithm runtime
+dynamic programming, input size
+p vs np
+if the both ends is already connected, it would be create a cycle in close to theta
+union find lgv check connect logv  add logv 
+
+unbounded knapsack 
+
+memorize data structure 
+code
+
+why indexable pq help:
+
+memory overhead, do not need to add and remove every edge
+
+also the is runtime is bounded by the size of indexable pq
+
+note not huge improvement
+
+why eager prim ever:
+
+so always prefers eager prim than lazy prim
+
+P vs NP
+reduction
+
+for any problem can solve P then can solve NP
+=> P \subset of NP
+
+short answer multiple choice
+P vs NP just base level
+
+reduction: how to apply
+
+prove np complete:
+firstly show is NP
+then find a NP complete algorithm
+then transform a solved NP-problem into the new NP-problem
+then show it can be solved in the new problem
+=> we would 
+the conversion in the problem hard 
+
+given all NP problem
+
+approx ratio
+measure the accuracy
+how those stuff work
+
+can you proof 
+
+how non-determistic 
+
+random guess all of them 
+verify cannot 
+
+given a problem
+if NP
+if NP? whether P?
+(find a polynomial find)
+find the one point 
+describe non
+
+problems knows NP, we don’t know P or NPC

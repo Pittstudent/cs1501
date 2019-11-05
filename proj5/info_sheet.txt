@@ -1,0 +1,85 @@
+========================================
+CS/COE 1501 Assignment Information Sheet
+----------------------------------------
+
+You must submit an information sheet with every assignment.  Also be sure
+to submit all materials following the procedures described on the
+submission procedures page.
+
+Name:  Joanne Chen
+
+Lecture section: M/W 9:30AM-11:15AM 
+
+Recitation day and time: Monday 02:30PM-03:20PM 
+
+Assignment #:  5
+
+Program due date: 11:59 PM on Friday, July 27, 2018
+
+Handed in date:  July 27, 2018
+
+Source code file name(s):
+
+AirlineAnalysis.java
+Graph.java
+Edge.java
+Bag.java
+BreadthFirstPaths.java
+Queue.java
+IndexMinPQ.java
+DijkstraSP.java
+DirectedEdge.java
+EdgeWeightedDigraph.java
+EdgeWeightedGraph.java
+PrimMST.java
+UF.java
+Stack.java
+StdIn.java
+StdOut.java
+
+
+Other file name(s) (if relevant):
+
+a5data1.txt
+a5data2.txt
+sample.txt
+info_sheet.txt
+api folder contains the html for W section
+
+
+
+
+
+
+Does your program run without error?: Yes
+
+If not, what is/are the error(s) and which parts of your program run
+correctly?:
+
+
+
+
+Additional comments to the grader:
+
+To compile the project, do javac AirlineAnalysis.java. After running AirlineAnalysis.java, the command would show up a menu
+which asks the user input for any of the queries. 
+
+AirlineAnalysis.java has added a query to indicate the cheapest route from a source city to a destination city through a third
+city as option 8. User would be able to find the cheapest path from A to B given a stop at C. This meets one of the extra credit
+requirments.
+
+Note that for query that requires user input city names, they have to be exactly same as the city name in the text file that 
+has scanned (case sensitive). Otherwise it would keep ask you to enter until it is a valid city name. 
+
+A notification would be shown in command if a route that you want to add to the graph is already existed.
+A notification would be shown in command if a route that you want to delete from the graph does not existed.
+
+For W section, I have written comments for AirlineAnalysis.java and the resulting API formatted as an .html file is located inside 
+the api folder. 
+
+
+
+
+
+
+

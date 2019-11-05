@@ -1,0 +1,59 @@
+========================================
+CS/COE 1501 Assignment Information Sheet
+----------------------------------------
+
+You must submit an information sheet with every assignment.  Also be sure
+to submit all materials following the procedures described on the
+submission procedures page.
+
+Name: Joanne Chen
+
+Lecture section: M/W 9:30AM-11:15AM 
+
+Recitation day and time:  Monday 02:30PM-03:20PM
+
+Assignment #: 4 
+
+Program due date: 11:59PM on Friday, July 13, 2018
+
+Handed in date: 13th July
+
+Source code file name(s):
+SymCipher.java
+Add128.java
+Substitute.java
+SecureChatServer.java
+SecureChatClient.java
+
+
+
+Other file name(s) (if relevant):
+ImprovedChatClient.java
+ImprovedChatServer.java
+info_sheet.txt
+keys.txt
+
+
+
+
+
+
+Does your program run without error? Yes
+
+If not, what is/are the error(s) and which parts of your program run
+correctly?:
+
+
+
+
+
+Additional comments to the grader:
+
+Paper for the W section is not included in the zip.
+
+I have written a new SecureChatClient.java based on the primitive ImprovedChatClient.java as the client side of secure communications. 
+Grader should run SecureChatServer.java and SecureChatServer.java after implementing Add128 and Substitute.
+
+
+
+

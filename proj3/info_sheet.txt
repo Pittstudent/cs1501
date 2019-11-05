@@ -1,0 +1,59 @@
+========================================
+CS/COE 1501 Assignment Information Sheet
+----------------------------------------
+
+You must submit an information sheet with every assignment.  Also be sure
+to submit all materials following the procedures described on the
+submission procedures page.
+
+Name: Joanne Chen
+
+Lecture section: M/W 9:30AM-11:15AM 
+
+Recitation day and time:  Monday 02:30PM-03:20PM
+
+Assignment #: 3 
+
+Program due date:  11:59PM on Saturday, June 30, 2018
+
+Handed in date:  Jun 10th
+
+Source code file name(s):
+
+LZWmod.java
+
+
+
+
+Other file name(s) (if relevant):
+BinaryStdIn.java
+BinaryStdOut.java
+LZW.java
+Queue.java
+StdIn.java
+StdOut.java
+TST.java
+info_sheet.txt
+Project3 Paper.doc
+Project3 Paper W.doc -- for W section
+
+
+
+
+
+
+Does your program run without error? Yes
+
+If not, what is/are the error(s) and which parts of your program run
+correctly?:
+
+
+
+
+
+Additional comments to the grader:
+
+Note that test files are not included.
+
+
+
